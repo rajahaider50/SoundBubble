@@ -1,46 +1,46 @@
 # SoundBubble — Floating Soundboard App
 
-## ⚠️ پہلے یہ سمجھیں (بہت ضروری)
-یہ ایپ کسی دوسری ایپ (جیسے Free Fire) کے مائیکروفون میں براہِ راست ڈیجیٹل audio inject نہیں کرتی — Android بغیر **root** کے کسی بھی permission (Accessibility سمیت) کے ذریعے یہ اجازت نہیں دیتا۔ یہ security design ہے، bug نہیں۔
+## ⚠️ Please Understand First (Very Important)
+This app does NOT inject digital audio directly into another app's (e.g. Free Fire) microphone — Android does not allow this through any permission (including Accessibility) **without root**. This is a security design, not a bug.
 
-ایپ دو acoustic طریقوں سے کام کرتی ہے (Settings میں toggle موجود ہے):
-- **📢 Speaker موڈ** — audio فون کے speaker سے بجتی ہے، آپ کا mic خود اسے pick اپ کر لیتا ہے (headphones کے ساتھ کام نہیں کرے گا)
-- **🎧 Bluetooth موڈ** — اگر Bluetooth handsfree/earbuds لگی ہوں تو audio اسی کی SCO لائن پر بھیجی جاتی ہے، تاکہ mic کے قریب بجے
-- **Auto موڈ** — خودکار طور پر طے کرتی ہے کہ Bluetooth لگی ہے یا نہیں
+The app works through two acoustic methods (toggle available in Settings):
+- **📢 Speaker Mode** — audio plays through the phone's speaker, and your mic picks it up itself (will not work with headphones)
+- **🎧 Bluetooth Mode** — if a Bluetooth handsfree/earbud is connected, audio is sent to its SCO line so it plays close to the mic
+- **Auto Mode** — automatically decides whether Bluetooth is connected or not
 
-نتیجہ ڈیوائس، والیوم، اور echo cancellation پر منحصر ہے — کوئی 100% ضمانت نہیں۔
+The result depends on the device, volume, and echo cancellation — there is no 100% guarantee.
 
-## نئے فیچرز
-1. **📄 سنگل فائل امپورٹ** — ایک mp3/wav فائل شامل کریں
-2. **📁 پورا فولڈر امپورٹ** — Settings میں جا کر ایک پورا فولڈر منتخب کریں، اندر کی تمام audio files خودکار شامل ہو جائیں گی (subfolders سمیت)
-3. **🗜 ZIP امپورٹ** — ZIP فائل منتخب کریں، ایپ خودکار extract کر کے تمام audio files نکال لے گی (چاہے کتنے ہی folders کے اندر ہوں)
-4. **پہلے سے شامل Default Sounds** — نیچے دیکھیں کہ ہر نئے یوزر کو خودکار کچھ آواز پہلے سے کیسے ملیں گی
-5. **🎧 Bluetooth Permission بٹن** — Android 12+ پر Bluetooth routing کے لیے اجازت
-6. **🔊 Output Mode ٹوگل** — Auto / Speaker / Bluetooth کے درمیان سوئچ
+## New Features
+1. **📄 Single File Import** — add one mp3/wav file
+2. **📁 Whole Folder Import** — go to Settings and select an entire folder; all audio files inside are added automatically (including subfolders)
+3. **🗜 ZIP Import** — select a ZIP file and the app automatically extracts all audio files (no matter how many folders they are inside)
+4. **Pre-included Default Sounds** — see below how every new user automatically gets some sounds on first launch
+5. **🎧 Bluetooth Permission Button** — permission for Bluetooth routing on Android 12+
+6. **🔊 Output Mode Toggle** — switch between Auto / Speaker / Bluetooth
 
-## ہر نئے یوزر کو Default (پہلے سے موجود) اڈیوز کیسے دیں
-آپ کو صرف اپنی audio files اس فولڈر میں ڈالنی ہیں (build کرنے سے پہلے):
+## How to Give Default (pre-included) Sounds to Every New User
+You only need to place your audio files in this folder (before building):
 ```
 app/src/main/assets/default_sounds/
     hello.mp3
     laugh.mp3
     taunt1.mp3
 ```
-جیسے ہی کوئی نیا یوزر ایپ پہلی بار کھولے گا، یہ سب فائلیں خودکار اس کی audio list میں کاپی ہو جائیں گی — کوڈ میں کچھ بدلنے کی ضرورت نہیں، بس فائلیں اس فولڈر میں رکھیں اور GitHub پر push کر دیں۔
+As soon as any new user opens the app for the first time, all these files are automatically copied into their audio list — no code change needed. Just put the files in this folder and push to GitHub.
 
-(اہم: میں خود آڈیو کانٹینٹ generate نہیں کر سکتا — یہ حقیقی recorded/meme sounds آپ کو خود اس فولڈر میں شامل کرنے ہوں گے۔)
+(Important: I cannot generate audio content myself — you need to add the real recorded/meme sounds to this folder yourself.)
 
-## ایپ کیسے استعمال کریں
-1. Overlay Permission دیں
-2. (اختیاری) Bluetooth Permission دیں
-3. اپنی audios شامل کریں (single file / folder / zip / record) — یا default sounds پہلے سے موجود ہوں گی
-4. Output Mode منتخب کریں (یا Auto رہنے دیں)
-5. **لانچ** دبائیں → گول فلوٹنگ بٹن نظر آئے گا، اسے drag کر کے کہیں بھی رکھیں
-6. گیم کھولیں، بٹن پر ٹیپ کریں → audio panel کھلے گا، کوئی بھی audio play کریں
+## How to Use the App
+1. Grant the Overlay Permission
+2. (Optional) Grant the Bluetooth Permission
+3. Add your audios (single file / folder / zip / record) — or default sounds will already be there
+4. Select the Output Mode (or leave it on Auto)
+5. Press **Launch** → a round floating button will appear; drag it anywhere
+6. Open the game, tap the button → the audio panel opens, play any audio
 
-## GitHub پر پش کر کے APK کیسے بنائیں (بغیر Android Studio)
+## How to Build the APK by Pushing to GitHub (without Android Studio)
 
-1. یہ پورا فولڈر ایک نئی GitHub repository میں پش کریں:
+1. Push this whole folder into a new GitHub repository:
    ```bash
    git init
    git add .
@@ -49,28 +49,28 @@ app/src/main/assets/default_sounds/
    git remote add origin <YOUR_REPO_URL>
    git push -u origin main
    ```
-2. GitHub پر اپنی repo کھولیں → **Actions** tab پر جائیں
-3. "Build APK" workflow خودکار چل جائے گا
-4. مکمل ہونے کے بعد اس workflow run کو کھولیں → نیچے **Artifacts** میں `SoundBubble-debug-apk` ملے گی
-5. ڈاؤن لوڈ کر کے extract کریں → اندر `app-debug.apk` ملے گی
-6. یہ APK فون میں transfer کر کے انسٹال کریں (پہلے "Unknown sources" کی اجازت دینی پڑے گی)
+2. Open your repo on GitHub → go to the **Actions** tab
+3. The "Build APK" workflow will run automatically
+4. Once finished, open that workflow run → under **Artifacts** you will find `SoundBubble-debug-apk`
+5. Download and extract it → inside you will find `app-debug.apk`
+6. Transfer this APK to your phone and install it (you will first need to allow "Unknown sources")
 
-## اہم اجازتیں جو ایپ مانگے گی
-- **Display over other apps (Overlay)** — فلوٹنگ بٹن کے لیے لازمی
-- **Microphone** — صرف اگر آپ خود نئی audio ریکارڈ کریں
-- **Bluetooth Connect** (Android 12+) — صرف اگر Bluetooth output موڈ استعمال کرنا ہو
-- **Notifications** — سروس چلنے کی اطلاع کے لیے (Android 13+)
+## Important Permissions the App Will Request
+- **Display over other apps (Overlay)** — required for the floating button
+- **Microphone** — only if you want to record a new audio yourself
+- **Bluetooth Connect** (Android 12+) — only if you want to use the Bluetooth output mode
+- **Notifications** — to show the notification while the service is running (Android 13+)
 
-نوٹ: Accessibility permission جان بوجھ کر شامل نہیں کی گئی کیونکہ یہ audio routing میں کسی کام کی نہیں — صرف UI automation کے لیے ہوتی ہے۔
+Note: The Accessibility permission was intentionally not included because it is useless for audio routing — it is only for UI automation.
 
-## فولڈر structure
+## Folder Structure
 ```
 SoundBubble/
 ├── app/
 │   ├── build.gradle.kts
 │   └── src/main/
 │       ├── AndroidManifest.xml
-│       ├── assets/default_sounds/     (یہاں اپنی default audio files ڈالیں)
+│       ├── assets/default_sounds/     (place your default audio files here)
 │       ├── java/com/soundbubble/app/
 │       │   ├── MainActivity.kt        (import/record/launch/settings)
 │       │   ├── FloatingService.kt     (draggable bubble + panel)
@@ -78,12 +78,12 @@ SoundBubble/
 │       │   ├── AudioRouter.kt         (speaker/Bluetooth smart routing)
 │       │   └── FileImportHelper.kt    (folder import + zip extract + defaults)
 │       └── res/                       (layouts, drawables, strings)
-├── .github/workflows/build-apk.yml    (خودکار APK build)
+├── .github/workflows/build-apk.yml    (automatic APK build)
 ├── build.gradle.kts
 └── settings.gradle.kts
 ```
 
-## بعد میں بہتری کے لیے آئیڈیاز
-- App icon کو Play Store جیسا polish کرنا
-- Audio slots کو categories میں تقسیم کرنا (greetings, taunts, وغیرہ)
-- سروس کو boot کے بعد خودکار شروع کرنا (اختیاری)
+## Ideas for Future Improvements
+- Polish the app icon like a Play Store app
+- Divide audio slots into categories (greetings, taunts, etc.)
+- Auto-start the service after boot (optional)
