@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="فلوٹنگ سائونڈ بورڈ"
+            android:text="Floating Soundboard"
             android:textSize="13sp"
             android:layout_marginBottom="18dp" />
 
@@ -28,63 +28,63 @@
             android:id="@+id/btnOverlayPermission"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1) Overlay Permission دیں"
+            android:text="1) Grant Overlay Permission"
             android:layout_marginBottom="10dp" />
 
         <Button
             android:id="@+id/btnImportAudio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📄 سنگل اڈیو فائل شامل کریں"
+            android:text="📄 Add a single audio file"
             android:layout_marginBottom="10dp" />
 
         <Button
             android:id="@+id/btnImportFolder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📁 پورا فولڈر شامل کریں"
+            android:text="📁 Add a whole folder"
             android:layout_marginBottom="10dp" />
 
         <Button
             android:id="@+id/btnImportZip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🗜 ZIP فائل شامل کریں (خودکار Extract)"
+            android:text="🗜 Add ZIP file (auto extract)"
             android:layout_marginBottom="10dp" />
 
         <Button
             android:id="@+id/btnRecordAudio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🎙 نئی اڈیو ریکارڈ کریں"
+            android:text="🎙 Record a new audio"
             android:layout_marginBottom="10dp" />
 
         <Button
             android:id="@+id/btnBluetoothPermission"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🎧 بلوٹوتھ اجازت دیں"
+            android:text="🎧 Grant Bluetooth Permission"
             android:layout_marginBottom="10dp" />
 
         <Button
             android:id="@+id/btnOutputMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🔊 آؤٹ پٹ: خودکار (Auto)"
+            android:text="🔊 Output: Auto"
             android:layout_marginBottom="10dp" />
 
         <Button
             android:id="@+id/btnLaunch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🚀 فلوٹنگ بٹن لانچ کریں"
+            android:text="🚀 Launch Floating Button"
             android:backgroundTint="#2E7D32"
             android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="محفوظ شدہ اڈیوز:"
+            android:text="Saved Audios:"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
 
