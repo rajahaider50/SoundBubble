@@ -20,7 +20,13 @@ android {
             // Keystore values are injected at build time from environment variables
             // (set by the GitHub Actions workflow). Falls back to debug signing so
             // local builds still succeed.
-            storeFile = file(System.getenv("KEYSTORE_FILE") ?: ".")
+            val envFile = System.getenv("KEYSTORE_FILE")
+            storeFile = if (envFile != null) {
+                if (File(envFile).isAbsolute) File(envFile)
+                else File(rootProject.rootDir, envFile)
+            } else {
+                null
+            }
             storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
             keyAlias = System.getenv("KEY_ALIAS") ?: ""
             keyPassword = System.getenv("KEY_PASSWORD") ?: ""
