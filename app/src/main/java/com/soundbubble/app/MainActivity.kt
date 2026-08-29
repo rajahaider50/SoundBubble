@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri: Uri? ->
             uri?.let {
                 val count = FileImportHelper.importFolder(this, it, audioDir)
-                Toast.makeText(this, "$count اڈیو فائلیں فولڈر سے شامل ہو گئیں ✅", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "$count audio files added from folder ✅", Toast.LENGTH_SHORT).show()
                 refreshList()
             }
         }
@@ -49,9 +49,9 @@ class MainActivity : AppCompatActivity() {
             uri?.let {
                 val count = FileImportHelper.importZip(this, it, audioDir)
                 if (count > 0) {
-                    Toast.makeText(this, "$count اڈیو فائلیں ZIP سے extract ہو گئیں ✅", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "$count audio files extracted from ZIP ✅", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "ZIP میں کوئی سپورٹڈ اڈیو نہیں ملی", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "No supported audio found in ZIP", Toast.LENGTH_SHORT).show()
                 }
                 refreshList()
             }
@@ -60,19 +60,19 @@ class MainActivity : AppCompatActivity() {
     private val recordPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
             if (granted) toggleRecording()
-            else Toast.makeText(this, "ریکارڈنگ کے لیے Mic Permission درکار ہے", Toast.LENGTH_SHORT).show()
+            else Toast.makeText(this, "Mic permission is required for recording", Toast.LENGTH_SHORT).show()
         }
 
     private val bluetoothPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            val msg = if (granted) "بلوٹوتھ اجازت مل گئی ✅" else "بلوٹوتھ اجازت نہیں ملی"
+            val msg = if (granted) "Bluetooth permission granted ✅" else "Bluetooth permission not granted"
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
         }
 
     private val overlaySettingsLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (Settings.canDrawOverlays(this)) {
-                Toast.makeText(this, "Overlay Permission مل گئی ✅", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Overlay permission granted ✅", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -127,19 +127,19 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnLaunch.setOnClickListener {
             if (!Settings.canDrawOverlays(this)) {
-                Toast.makeText(this, "پہلے Overlay Permission دیں", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please grant Overlay permission first", Toast.LENGTH_SHORT).show()
                 requestOverlayPermission()
                 return@setOnClickListener
             }
             if (getAudioFiles().isEmpty()) {
-                Toast.makeText(this, "پہلے کم از کم ایک اڈیو شامل کریں", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please add at least one audio first", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             val intent = Intent(this, FloatingService::class.java)
             ContextCompat.startForegroundService(this, intent)
             Toast.makeText(
                 this,
-                "فلوٹنگ بٹن شروع ہو گیا۔ اب ہوم بٹن دبا کر گیم اوپن کریں",
+                "Floating button started. Now press Home and open the game",
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity() {
             )
             overlaySettingsLauncher.launch(intent)
         } else {
-            Toast.makeText(this, "Overlay Permission پہلے سے موجود ہے", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Overlay permission already granted", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -173,10 +173,10 @@ class MainActivity : AppCompatActivity() {
             ) {
                 bluetoothPermissionLauncher.launch(android.Manifest.permission.BLUETOOTH_CONNECT)
             } else {
-                Toast.makeText(this, "بلوٹوتھ اجازت پہلے سے موجود ہے", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Bluetooth permission already granted", Toast.LENGTH_SHORT).show()
             }
         } else {
-            Toast.makeText(this, "اس Android ورژن پر اضافی اجازت درکار نہیں", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No additional permission needed on this Android version", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -187,10 +187,10 @@ class MainActivity : AppCompatActivity() {
             contentResolver.openInputStream(uri)?.use { input ->
                 FileOutputStream(outFile).use { output -> input.copyTo(output) }
             }
-            Toast.makeText(this, "اڈیو شامل ہو گئی ✅", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Audio added ✅", Toast.LENGTH_SHORT).show()
             refreshList()
         } catch (e: Exception) {
-            Toast.makeText(this, "درآمد ناکام: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Import failed: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -207,7 +207,7 @@ class MainActivity : AppCompatActivity() {
                 start()
             }
             isRecording = true
-            binding.btnRecordAudio.text = "⏹ ریکارڈنگ روکیں اور محفوظ کریں"
+            binding.btnRecordAudio.text = "⏹ Stop recording and save"
         } else {
             try {
                 recorder?.apply {
@@ -218,8 +218,8 @@ class MainActivity : AppCompatActivity() {
             }
             recorder = null
             isRecording = false
-            binding.btnRecordAudio.text = "🎙 نئی اڈیو ریکارڈ کریں"
-            Toast.makeText(this, "ریکارڈنگ محفوظ ہو گئی ✅", Toast.LENGTH_SHORT).show()
+            binding.btnRecordAudio.text = "🎙 Record a new audio"
+            Toast.makeText(this, "Recording saved ✅", Toast.LENGTH_SHORT).show()
             refreshList()
         }
     }
