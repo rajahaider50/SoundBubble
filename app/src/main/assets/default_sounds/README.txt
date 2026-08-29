@@ -1,4 +1,4 @@
-اپنی ڈیفالٹ (پہلے سے شامل) اڈیو فائلیں اسی فولڈر کے اندر ڈالیں — مثلاً:
+Place your default (built-in) audio files inside this folder, for example:
 
 app/src/main/assets/default_sounds/
     hello.mp3
@@ -6,8 +6,8 @@ app/src/main/assets/default_sounds/
     taunt1.mp3
     taunt2.mp3
 
-نوٹ:
-- صرف .mp3 / .wav / .m4a / .ogg / .aac / .3gp / .amr فارمیٹس چلیں گے
-- اس فائل (README.txt) کو رہنے دیں یا حذف کر دیں، یہ audio فائل نہیں تو خودکار نظر انداز ہو جائے گی
-- GitHub Actions پر پش کرتے وقت یہ فولڈر بھی commit میں شامل ہونا چاہیے
-- ایپ پہلی بار کھلنے پر یہ سب فائلیں خودکار طور پر ہر یوزر کی audio لسٹ میں کاپی ہو جائیں گی
+Note:
+- Only .mp3 / .wav / .m4a / .ogg / .aac / .3gp / .amr formats are supported
+- You may keep or delete this file (README.txt); it is not an audio file so it will be ignored automatically
+- Make sure this folder is included in the commit when pushing to GitHub Actions
+- When the app is opened for the first time, these files are automatically copied to every user's audio list
