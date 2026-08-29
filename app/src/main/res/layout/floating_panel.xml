@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="🎵 اڈیو منتخب کریں"
+            android:text="🎵 Select Audio"
             android:textStyle="bold"
             android:textColor="#FFFFFF" />
 
@@ -41,7 +41,7 @@
         android:id="@+id/btnStop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="⏹ سروس بند کریں"
+        android:text="⏹ Stop Service"
         android:textSize="12sp"
         android:layout_marginTop="8dp" />
 
