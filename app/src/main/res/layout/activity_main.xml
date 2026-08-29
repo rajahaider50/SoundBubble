@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="فلوٹنگ سائونڈ بورڈ"
+            android:textSize="13sp"
+            android:layout_marginBottom="18dp" />
+
+        <Button
+            android:id="@+id/btnOverlayPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1) Overlay Permission دیں"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnImportAudio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📄 سنگل اڈیو فائل شامل کریں"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnImportFolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📁 پورا فولڈر شامل کریں"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnImportZip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🗜 ZIP فائل شامل کریں (خودکار Extract)"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnRecordAudio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🎙 نئی اڈیو ریکارڈ کریں"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnBluetoothPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🎧 بلوٹوتھ اجازت دیں"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnOutputMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔊 آؤٹ پٹ: خودکار (Auto)"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnLaunch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🚀 فلوٹنگ بٹن لانچ کریں"
+            android:backgroundTint="#2E7D32"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="محفوظ شدہ اڈیوز:"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="150dp" />
+
+    </LinearLayout>
+</ScrollView>
