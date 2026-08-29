@@ -53,8 +53,8 @@ class FloatingService : Service() {
                 .createNotificationChannel(channel)
         }
         val notification = NotificationCompat.Builder(this, channelId)
-            .setContentTitle("SoundBubble چل رہا ہے")
-            .setContentText("فلوٹنگ بٹن ایکٹو ہے")
+            .setContentTitle("SoundBubble is running")
+            .setContentText("Floating button is active")
             .setSmallIcon(android.R.drawable.ic_btn_speak_now)
             .setOngoing(true)
             .build()
