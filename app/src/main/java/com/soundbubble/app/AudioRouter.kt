@@ -41,9 +41,9 @@ object AudioRouter {
     }
 
     fun modeLabel(mode: Mode): String = when (mode) {
-        Mode.AUTO -> "🔊 آؤٹ پٹ: خودکار (Auto)"
-        Mode.SPEAKER -> "🔊 آؤٹ پٹ: فون سپیکر"
-        Mode.BLUETOOTH -> "🎧 آؤٹ پٹ: بلوٹوتھ ہینڈزفری"
+        Mode.AUTO -> "🔊 Output: Auto"
+        Mode.SPEAKER -> "🔊 Output: Phone Speaker"
+        Mode.BLUETOOTH -> "🎧 Output: Bluetooth Handsfree"
     }
 
     /** Plays [file] using the saved routing preference. Caller should keep the returned MediaPlayer
